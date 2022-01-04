@@ -11,6 +11,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .tooltip {
@@ -51,12 +52,17 @@
   flex-direction: row;
 }
 
+.solving {
+  opacity: 0.5;
+}
+
 .cell {
   margin: 1px;
   position: relative;
   background-color: rgba(255, 255, 255, 0.2);
   width: 32px;
   height: 32px;
+  border-radius: 4px;
 }
 
 .mb-4 {
@@ -94,9 +100,10 @@
   font-weight: bold;
   font-size: 20px;
   background-color: transparent;
+  border-radius: 4px;
 }
 
-.input:focus {
+.input:focus, .input::selection {
   background-color: #282c34;
 }
 
@@ -156,4 +163,42 @@
 
 .solve-button:hover {
   opacity: 0.8;
+}
+
+.spinner {
+  animation: rotate 2s linear infinite;
+  z-index: 2;
+  position: absolute;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+  margin: 0;
+  width: 50px;
+  height: 50px;
+}
+
+.spinner .path {
+  stroke: #61dafb;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
 }

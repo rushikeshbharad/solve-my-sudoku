@@ -17,9 +17,13 @@ const App = () => {
   const [invalidCol, setInvalidCol] = useState(9)
   const [invalidBox, setInvalidBox] = useState(9)
   const [showHelp, setShowHelp] = useState(false)
+  const [solving, setSolving] = useState(false)
   const inputRefs = useRef([])
 
   useEffect(() => {
+    if (solving) {
+      return
+    }
     for (let i = 0; i < 9; i += 1) {
       const row = []
       for (let j = 0; j < 9; j += 1) {
@@ -70,7 +74,7 @@ const App = () => {
         setInvalidBox(9)
       }
     }
-  }, [state])
+  }, [state, solving])
 
   const setCellValue = ({ value, i, j }) => {
     if ((+value > 0 && +value < 10) || value === "") {
@@ -256,6 +260,41 @@ const App = () => {
         value
       })
     }
+  }
+
+  const setRandom = () => {
+    const randomState = cloneDeep(DEFAULT_STATE).map((row) => row.map(() => ({
+      value: Math.ceil(Math.random() * 9) - 1,
+      possibilities: []
+    })))
+    setState(randomState)
+  }
+
+  const setTheFinalState = (currentState) => {
+    setSolving(true)
+    setTimeout(setRandom, 250)
+    setTimeout(setRandom, 500)
+    setTimeout(setRandom, 750)
+    setTimeout(setRandom, 1000)
+    setTimeout(setRandom, 1250)
+    setTimeout(setRandom, 1500)
+    setTimeout(setRandom, 1750)
+    setTimeout(setRandom, 2000)
+    setTimeout(setRandom, 2250)
+    setTimeout(setRandom, 2500)
+    setTimeout(setRandom, 2750)
+    setTimeout(setRandom, 3000)
+    setTimeout(setRandom, 3250)
+    setTimeout(setRandom, 3500)
+    setTimeout(setRandom, 3750)
+    setTimeout(setRandom, 4000)
+    setTimeout(setRandom, 4250)
+    setTimeout(setRandom, 4500)
+    setTimeout(setRandom, 4750)
+    setTimeout(() => {
+      setState(currentState)
+      setSolving(false)
+    }, 5000)
   }
 
   const addPossibilities = ({ currentState, showHelp = false }) => {
@@ -478,7 +517,7 @@ const App = () => {
     if (
       currentState.every((row) => row.every((cell) => cell.value))
     ) {
-      setState(currentState)
+      setTheFinalState(currentState)
     } else {
       if (isEqual(currentState, inputState)) {
         if (backupStates.length) {
@@ -522,10 +561,22 @@ const App = () => {
   return (
     <div className="app">
       <div className="container">
+        {solving && (
+          <svg className="spinner" viewBox="0 0 50 50">
+            <circle
+              className="path"
+              cx="25"
+              cy="25"
+              r="20"
+              fill="none"
+              strokeWidth="5"
+            />
+          </svg>
+        )}
         {state.map((row, i) => (
           <div
             key={i}
-            className="row"
+            className={`row${solving ? " solving" : ""}`}
           >
             {row.map(({ value, possibilities }, j) => (
               <div
