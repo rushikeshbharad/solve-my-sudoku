@@ -1,0 +1,113 @@
+.app {
+  background-color: #282c34;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.tooltip {
+  position: absolute;
+  opacity: 0.5;
+  color: #61dafb;
+  bottom: calc(100% - 8px);
+  visibility: hidden;
+  font-size: 8px;
+}
+
+.container:hover .cell {
+  /*margin: 4px;*/
+}
+
+.container:hover .tooltip {
+  /*visibility: visible;*/
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.cell {
+  margin: 1px;
+  position: relative;
+}
+
+.mb-4 {
+  margin-bottom: 4px;
+}
+
+.mr-4 {
+  margin-right: 4px;
+}
+
+.input {
+  outline: none;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 32px;
+  color: #61dafb;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.input.invalid {
+  background-color: rgb(220, 38, 38);
+}
+
+.buttons {
+  margin-top: 48px;
+  display: flex;
+}
+
+.reset-button {
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  border: 1px solid #61dafb;
+  color: #61dafb;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  opacity: 0.8;
+}
+
+.solve-button {
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #61dafb;
+  border-radius: 4px;
+  border: none;
+  color: #282c34;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 32px;
+}
+
+.solve-button:hover {
+  opacity: 0.8;
+}
