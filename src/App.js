@@ -16,6 +16,7 @@ const App = () => {
   const [invalidRow, setInvalidRow] = useState(9)
   const [invalidCol, setInvalidCol] = useState(9)
   const [invalidBox, setInvalidBox] = useState(9)
+  const [showHelp, setShowHelp] = useState(false)
 
   useEffect(() => {
     for (let i = 0; i < 9; i += 1) {
@@ -75,6 +76,12 @@ const App = () => {
       const currentState = cloneDeep(state)
       currentState[i][j].value = value
       setState(currentState)
+      if (showHelp) {
+        addPossibilities({
+          currentState: cloneDeep(currentState),
+          showHelp: true
+        })
+      }
     }
   }
 
@@ -250,63 +257,76 @@ const App = () => {
     }
   }
 
+  const addPossibilities = ({ currentState, showHelp = false }) => {
+    setShowHelp(showHelp)
+    for (let i = 0; i < 9; i += 1) {
+      for (let j = 0; j < 9; j += 1) {
+        currentState[i][j].possibilities = []
+      }
+    }
+    // Add possibilities - iterate through row, col and box for each cell
+    //   - all nine numbers is the possibility
+    //   - remove numbers found in corresponding row, col and box
+    //   - check if possibilities array already includes the possibility
+    for (let i = 0; i < 9; i += 1) {
+      for (let j = 0; j < 9; j += 1) {
+        if (currentState[i][j].value) {
+          continue
+        }
+        const rowNumber = i
+        const colNumber = j
+        const boxNumber = getBoxNumber({
+          boxRow: Math.floor(i / 3),
+          boxCol: Math.floor(j / 3)
+        })
+        const possibilities = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        for (let rowIterator = 0; rowIterator < 9; rowIterator += 1) {
+          if (colNumber !== rowIterator) {
+            const value = +currentState[rowNumber][rowIterator].value
+            const presenceIndex = possibilities.findIndex((v) => v === value)
+            if (presenceIndex !== -1) {
+              possibilities.splice(presenceIndex, 1)
+            }
+          }
+        }
+        for (let colIterator = 0; colIterator < 9; colIterator += 1) {
+          if (rowNumber !== colIterator) {
+            const value = +currentState[colIterator][colNumber].value
+            const presenceIndex = possibilities.findIndex((v) => v === value)
+            if (presenceIndex !== -1) {
+              possibilities.splice(presenceIndex, 1)
+            }
+          }
+        }
+        const { boxRow, boxCol } = getBoxRowCol(boxNumber)
+        for (let iMini = boxRow * 3; iMini < (boxRow + 1) * 3; iMini += 1) {
+          for (let jMini = boxCol * 3; jMini < (boxCol + 1) * 3; jMini += 1) {
+            if (!(rowNumber === iMini && colNumber === jMini)) {
+              const value = +currentState[iMini][jMini].value
+              const presenceIndex = possibilities.findIndex((v) => v === value)
+              if (presenceIndex !== -1) {
+                possibilities.splice(presenceIndex, 1)
+              }
+            }
+          }
+        }
+        currentState[rowNumber][colNumber].possibilities =
+          [...new Set([
+            ...currentState[rowNumber][colNumber].possibilities,
+            ...possibilities
+          ])]
+      }
+    }
+    if (showHelp) {
+      setState(currentState)
+    }
+  }
+
   const solve = (inputState, firstTime = false) => {
     const currentState = cloneDeep(inputState)
     if (firstTime) {
       backupStates = []
-      // Add possibilities - iterate through row, col and box for each cell
-      //   - all nine numbers is the possibility
-      //   - remove numbers found in corresponding row, col and box
-      //   - check if possibilities array already includes the possibility
-      for (let i = 0; i < 9; i += 1) {
-        for (let j = 0; j < 9; j += 1) {
-          if (currentState[i][j].value) {
-            continue
-          }
-          const rowNumber = i
-          const colNumber = j
-          const boxNumber = getBoxNumber({
-            boxRow: Math.floor(i / 3),
-            boxCol: Math.floor(j / 3)
-          })
-          const possibilities = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-          for (let rowIterator = 0; rowIterator < 9; rowIterator += 1) {
-            if (colNumber !== rowIterator) {
-              const value = +currentState[rowNumber][rowIterator].value
-              const presenceIndex = possibilities.findIndex((v) => v === value)
-              if (presenceIndex !== -1) {
-                possibilities.splice(presenceIndex, 1)
-              }
-            }
-          }
-          for (let colIterator = 0; colIterator < 9; colIterator += 1) {
-            if (rowNumber !== colIterator) {
-              const value = +currentState[colIterator][colNumber].value
-              const presenceIndex = possibilities.findIndex((v) => v === value)
-              if (presenceIndex !== -1) {
-                possibilities.splice(presenceIndex, 1)
-              }
-            }
-          }
-          const { boxRow, boxCol } = getBoxRowCol(boxNumber)
-          for (let iMini = boxRow * 3; iMini < (boxRow + 1) * 3; iMini += 1) {
-            for (let jMini = boxCol * 3; jMini < (boxCol + 1) * 3; jMini += 1) {
-              if (!(rowNumber === iMini && colNumber === jMini)) {
-                const value = +currentState[iMini][jMini].value
-                const presenceIndex = possibilities.findIndex((v) => v === value)
-                if (presenceIndex !== -1) {
-                  possibilities.splice(presenceIndex, 1)
-                }
-              }
-            }
-          }
-          currentState[rowNumber][colNumber].possibilities =
-            [...new Set([
-              ...currentState[rowNumber][colNumber].possibilities,
-              ...possibilities
-            ])]
-        }
-      }
+      addPossibilities({ currentState })
     }
     // Apply single length possibilities and empty the array
     for (let i = 0; i < 9; i += 1) {
@@ -485,11 +505,16 @@ const App = () => {
     }
   }
 
+  const getHelp = () => {
+    addPossibilities({ currentState: cloneDeep(state), showHelp: !showHelp })
+  }
+
   const reset = () => {
     setState(DEFAULT_STATE)
     setInvalidRow(9)
     setInvalidCol(9)
     setInvalidBox(9)
+    setShowHelp(false)
     backupStates = []
   }
 
@@ -508,26 +533,41 @@ const App = () => {
                   !((i + 1) % 3) && i !==8 && "mb-4"
                 } ${
                   !((j + 1) % 3) && j !==8 && "mr-4"
+                } ${
+                  (
+                    invalidRow === i ||
+                    invalidCol === j ||
+                    invalidBox === getBoxNumber({
+                      boxRow: Math.floor(i / 3),
+                      boxCol: Math.floor(j / 3)
+                    })
+                  ) && "invalid"
                 }`}
               >
-                <span className="tooltip">{possibilities.join(",")}</span>
-                <input
-                  className={`input ${
-                    (
-                      invalidRow === i ||
-                      invalidCol === j ||
-                      invalidBox === getBoxNumber({
-                        boxRow: Math.floor(i / 3),
-                        boxCol: Math.floor(j / 3)
-                      })
-                    ) && "invalid"
-                  }`}
-                  value={value}
-                  type="number"
-                  onChange={(e) => {
-                    setCellValue({ value: e.target.value, i, j })
-                  }}
-                />
+                <div
+                  className={`tooltip ${showHelp && "show"}`}
+                >
+                  <span>
+                    {possibilities.reduce((acc, p, i) => {
+                      if (!(i % 3) && i !== 0) {
+                        return `${acc}\n${p}`
+                      }
+                      return `${acc} ${p}`
+                    }, "")}
+                  </span>
+                </div>
+                <div className="input-container">
+                  <input
+                    className="input"
+                    value={value}
+                    type="number"
+                    pattern="\d*"
+                    onClick={(e) => e.target.select()}
+                    onChange={(e) => {
+                      setCellValue({ value: e.target.value, i, j })
+                    }}
+                  />
+                </div>
               </div>
             ))}
           </div>
@@ -539,6 +579,12 @@ const App = () => {
           onClick={() => solve(state, true)}
         >
           Solve
+        </button>
+        <button
+          className="help-button"
+          onClick={getHelp}
+        >
+          {showHelp ? "Don't help" : "Help"}
         </button>
         <button
           className="reset-button"
