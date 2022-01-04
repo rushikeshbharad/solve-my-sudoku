@@ -8,17 +8,6 @@ const DEFAULT_STATE = Array(9)
     .fill({})
     .map(() => ({ value: "", possibilities: [] }))
   )
-// const DEFAULT_STATE = [
-//   [{value:"", possibilities:[]},{value:"", possibilities:[]},{value:"", possibilities:[]}, {value:"7", possibilities:[]}, {value:"", possibilities:[]},{value:"", possibilities:[]}, {value:"", possibilities:[]},{value:"", possibilities:[]}, {value:"1", possibilities:[]}],
-//   [{value:"", possibilities:[]},{value:"", possibilities:[]},{value:"", possibilities:[]}, {value:"", possibilities:[]},{value:"9", possibilities:[]},{value:"", possibilities:[]}, {value:"8", possibilities:[]},{value:"", possibilities:[]},{value:"", possibilities:[]}],
-//   [{value:"4", possibilities:[]},{value:"", possibilities:[]},{value:"8", possibilities:[]}, {value:"6", possibilities:[]},{value:"", possibilities:[]},{value:"", possibilities:[]}, {value:"", possibilities:[]},{value:"", possibilities:[]},{value:"", possibilities:[]}],
-//   [{value:"", possibilities:[]},{value:"", possibilities:[]},{value:"9", possibilities:[]}, {value:"", possibilities:[]},{value:"5", possibilities:[]},{value:"2", possibilities:[]}, {value:"", possibilities:[]},{value:"", possibilities:[]},{value:"", possibilities:[]}],
-//   [{value:"", possibilities:[]},{value:"2", possibilities:[]},{value:"", possibilities:[]}, {value:"", possibilities:[]},{value:"", possibilities:[]},{value:"1", possibilities:[]}, {value:"7", possibilities:[]},{value:"", possibilities:[]},{value:"", possibilities:[]}],
-//   [{value:"", possibilities:[]},{value:"5", possibilities:[]},{value:"", possibilities:[]}, {value:"", possibilities:[]},{value:"", possibilities:[]},{value:"", possibilities:[]}, {value:"", possibilities:[]},{value:"", possibilities:[]},{value:"", possibilities:[]}],
-//   [{value:"3", possibilities:[]},{value:"", possibilities:[]},{value:"", possibilities:[]}, {value:"", possibilities:[]},{value:"", possibilities:[]},{value:"", possibilities:[]}, {value:"", possibilities:[]},{value:"9", possibilities:[]},{value:"", possibilities:[]}],
-//   [{value:"9", possibilities:[]},{value:"6", possibilities:[]},{value:"", possibilities:[]}, {value:"", possibilities:[]},{value:"", possibilities:[]},{value:"", possibilities:[]}, {value:"", possibilities:[]},{value:"7", possibilities:[]},{value:"", possibilities:[]}],
-//   [{value:"", possibilities:[]},{value:"", possibilities:[]},{value:"", possibilities:[]}, {value:"", possibilities:[]},{value:"", possibilities:[]},{value:"", possibilities:[]}, {value:"1", possibilities:[]},{value:"2", possibilities:[]},{value:"5", possibilities:[]}]
-// ]
 
 let backupStates = []
 
@@ -27,8 +16,6 @@ const App = () => {
   const [invalidRow, setInvalidRow] = useState(9)
   const [invalidCol, setInvalidCol] = useState(9)
   const [invalidBox, setInvalidBox] = useState(9)
-
-  console.log("backupStates => ", backupStates)
 
   useEffect(() => {
     for (let i = 0; i < 9; i += 1) {
@@ -266,6 +253,7 @@ const App = () => {
   const solve = (inputState, firstTime = false) => {
     const currentState = cloneDeep(inputState)
     if (firstTime) {
+      backupStates = []
       // Add possibilities - iterate through row, col and box for each cell
       //   - all nine numbers is the possibility
       //   - remove numbers found in corresponding row, col and box
