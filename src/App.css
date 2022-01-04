@@ -96,7 +96,7 @@
   background-color: transparent;
 }
 
-.input.focus-visible {
+.input:focus {
   background-color: #282c34;
 }
 
