@@ -1,5 +1,5 @@
 import { cloneDeep, isEqual } from 'lodash'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 
 const DEFAULT_STATE = Array(9)
@@ -17,6 +17,7 @@ const App = () => {
   const [invalidCol, setInvalidCol] = useState(9)
   const [invalidBox, setInvalidBox] = useState(9)
   const [showHelp, setShowHelp] = useState(false)
+  const inputRefs = useRef([])
 
   useEffect(() => {
     for (let i = 0; i < 9; i += 1) {
@@ -558,6 +559,9 @@ const App = () => {
                 </div>
                 <div className="input-container">
                   <input
+                    ref={(ref) => {
+                      inputRefs.current[i * 9 + j] = ref
+                    }}
                     className="input"
                     value={value}
                     type="number"
@@ -565,6 +569,37 @@ const App = () => {
                     onClick={(e) => e.target.select()}
                     onChange={(e) => {
                       setCellValue({ value: e.target.value, i, j })
+                    }}
+                    onKeyDown={(e) => {
+                      let rowNumber = i
+                      let colNumber = j
+                      switch (e.key) {
+                        case "ArrowUp":
+                          e.preventDefault()
+                          rowNumber -= 1
+                          break
+                        case "ArrowDown":
+                          e.preventDefault()
+                          rowNumber += 1
+                          break
+                        case "ArrowLeft":
+                          e.preventDefault()
+                          colNumber -= 1
+                          break
+                        case "ArrowRight":
+                          e.preventDefault()
+                          colNumber += 1
+                          break
+                        default:
+                          break
+                      }
+                      rowNumber = rowNumber < 0
+                        ? 8
+                        : (rowNumber > 8 ? 0 : rowNumber)
+                      colNumber = colNumber < 0
+                        ? 8
+                        : (colNumber > 8 ? 0 : colNumber)
+                      inputRefs.current[rowNumber * 9 +colNumber].focus()
                     }}
                   />
                 </div>
