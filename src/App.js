@@ -271,30 +271,7 @@ const App = () => {
   }
 
   const setTheFinalState = (currentState) => {
-    setSolving(true)
-    setTimeout(setRandom, 250)
-    setTimeout(setRandom, 500)
-    setTimeout(setRandom, 750)
-    setTimeout(setRandom, 1000)
-    setTimeout(setRandom, 1250)
-    setTimeout(setRandom, 1500)
-    setTimeout(setRandom, 1750)
-    setTimeout(setRandom, 2000)
-    setTimeout(setRandom, 2250)
-    setTimeout(setRandom, 2500)
-    setTimeout(setRandom, 2750)
-    setTimeout(setRandom, 3000)
-    setTimeout(setRandom, 3250)
-    setTimeout(setRandom, 3500)
-    setTimeout(setRandom, 3750)
-    setTimeout(setRandom, 4000)
-    setTimeout(setRandom, 4250)
-    setTimeout(setRandom, 4500)
-    setTimeout(setRandom, 4750)
-    setTimeout(() => {
-      setState(currentState)
-      setSolving(false)
-    }, 5000)
+    setState(currentState)
   }
 
   const addPossibilities = ({ currentState, showHelp = false }) => {
