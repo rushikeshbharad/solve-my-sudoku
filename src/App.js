@@ -17,13 +17,9 @@ const App = () => {
   const [invalidCol, setInvalidCol] = useState(9)
   const [invalidBox, setInvalidBox] = useState(9)
   const [showHelp, setShowHelp] = useState(false)
-  const [solving, setSolving] = useState(false)
   const inputRefs = useRef([])
 
   useEffect(() => {
-    if (solving) {
-      return
-    }
     for (let i = 0; i < 9; i += 1) {
       const row = []
       for (let j = 0; j < 9; j += 1) {
@@ -74,7 +70,7 @@ const App = () => {
         setInvalidBox(9)
       }
     }
-  }, [state, solving])
+  }, [state])
 
   const setCellValue = ({ value, i, j }) => {
     if ((+value > 0 && +value < 10) || value === "") {
@@ -260,14 +256,6 @@ const App = () => {
         value
       })
     }
-  }
-
-  const setRandom = () => {
-    const randomState = cloneDeep(DEFAULT_STATE).map((row) => row.map(() => ({
-      value: Math.ceil(Math.random() * 9) - 1,
-      possibilities: []
-    })))
-    setState(randomState)
   }
 
   const setTheFinalState = (currentState) => {
@@ -538,23 +526,8 @@ const App = () => {
   return (
     <div className="app">
       <div className="container">
-        {solving && (
-          <svg className="spinner" viewBox="0 0 50 50">
-            <circle
-              className="path"
-              cx="25"
-              cy="25"
-              r="20"
-              fill="none"
-              strokeWidth="5"
-            />
-          </svg>
-        )}
         {state.map((row, i) => (
-          <div
-            key={i}
-            className={`row${solving ? " solving" : ""}`}
-          >
+          <div key={i} className="row">
             {row.map(({ value, possibilities }, j) => (
               <div
                 key={j}
