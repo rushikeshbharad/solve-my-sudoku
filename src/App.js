@@ -525,6 +525,48 @@ const App = () => {
 
   return (
     <div className="app">
+      <h1 style={{ display: "none" }}>
+        Free Online Sudoku Solver - Instantly Solve Any Sudoku Puzzle
+      </h1>
+      <h2 style={{ display: "none" }}>
+        How to Use the Sudoku Solver
+      </h2>
+      <h2 style={{ display: "none" }}>
+        How to Use the Sudoku Solver
+      </h2>
+      <h3 style={{ display: "none" }}>
+        Step 1: Enter Your Sudoku Grid
+      </h3>
+      <h3 style={{ display: "none" }}>
+        Step 2: Click 'Solve' and Get Instant Results
+      </h3>
+      <h3 style={{ display: "none" }}>
+        Step 3: Copy or Print the Solution
+      </h3>
+      <h2 style={{ display: "none" }}>
+        Features of Our Sudoku Solver
+      </h2>
+      <h3 style={{ display: "none" }}>
+        Supports Easy, Medium, Hard, and Expert Puzzles
+      </h3>
+      <h3 style={{ display: "none" }}>
+        Fast and Accurate Sudoku Solver Algorithm
+      </h3>
+      <h3 style={{ display: "none" }}>
+        Works on Mobile, Tablet, and Desktop
+      </h3>
+      <h2 style={{ display: "none" }}>
+        Frequently Asked Questions (FAQ)
+      </h2>
+      <h3 style={{ display: "none" }}>
+        Can I Solve Any Sudoku Puzzle with This Tool?: Yes
+      </h3>
+      <h3 style={{ display: "none" }}>
+        Is This Sudoku Solver Free to Use?: Yes
+      </h3>
+      <h3 style={{ display: "none" }}>
+        Does This Sudoku Solver Work for X Sudoku Variants?: No works only for 9X9
+      </h3>
       <div className="container">
         {state.map((row, i) => (
           <div key={i} className="row">
