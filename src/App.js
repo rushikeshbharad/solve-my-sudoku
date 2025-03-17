@@ -1,5 +1,6 @@
 import { cloneDeep, isEqual } from 'lodash'
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router'
 import './App.css'
 
 const DEFAULT_STATE = Array(9)
@@ -670,6 +671,14 @@ const App = () => {
         >
           Reset
         </button>
+      </div>
+      <div className="footer">
+        <Link
+          to="/privacy-policy"
+          className="link"
+        >
+          Privacy Policy
+        </Link>
       </div>
     </div>
   );

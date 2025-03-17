@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .container {
@@ -201,4 +202,13 @@
     stroke-dasharray: 90, 150;
     stroke-dashoffset: -124;
   }
+}
+
+.footer {
+  position: absolute;
+  bottom: 8px;
+}
+
+.footer .link {
+  color: white;
 }

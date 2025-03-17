@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.home-button {
+  color: black;
+  font-size: 24px;
+  margin: 16px;
+}
