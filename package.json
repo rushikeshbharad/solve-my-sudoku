@@ -1,6 +1,6 @@
 {
   "name": "solve-my-sudoku",
-  "homepage": "http://rushikeshbharad.github.io/solve-my-sudoku",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
