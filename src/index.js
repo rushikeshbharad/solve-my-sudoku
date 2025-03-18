@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import PrivacyPolicy from './privacy-policy';
+import AboutUs from './about-us'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router';
 
@@ -11,6 +12,7 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/about-us" element={<AboutUs />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')
