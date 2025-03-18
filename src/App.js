@@ -1,5 +1,6 @@
 import { cloneDeep, isEqual } from 'lodash'
 import { useEffect, useRef, useState } from 'react'
+import AdSense from 'react-adsense'
 import { Link } from 'react-router'
 import './App.css'
 
@@ -629,6 +630,16 @@ const App = () => {
         >
           Reset
         </button>
+      </div>
+      <div style={{ margin: '16px 0', width: '100%', textAlign: 'center' }}>
+        <AdSense.Google
+          client='ca-pub-9179894717144436'
+          slot='6141439349'
+          style={{ display: 'block' }}
+          format='auto'
+          responsive='true'
+          layoutKey='-gw-1+2a-9x+5c'
+        />
       </div>
       <div className="info-container">
         <h1>
