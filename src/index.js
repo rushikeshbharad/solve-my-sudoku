@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import TermsOfUse from './terms-of-use';
 import PrivacyPolicy from './privacy-policy';
 import AboutUs from './about-us'
 import reportWebVitals from './reportWebVitals';
@@ -11,6 +12,7 @@ ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
+      <Route path="/terms-of-use" element={<TermsOfUse />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/about-us" element={<AboutUs />} />
     </Routes>

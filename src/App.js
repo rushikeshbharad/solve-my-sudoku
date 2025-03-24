@@ -661,13 +661,19 @@ const App = () => {
           Features of Our Sudoku Solver
         </h2>
         <h3>
-          Supports Easy, Medium, Hard, and Expert Puzzles
+          Tackles all Sudoku difficulty levels: Easy, Medium, Hard, and Expert.
         </h3>
         <h3>
-          Fast and Accurate Sudoku Solver Algorithm
+          High-Performance Sudoku Solver: Delivers Rapid and Precise Solutions.
         </h3>
         <h3>
-          Works on Mobile, Tablet, and Desktop
+          Instant Sudoku Solver: Crack Even the Hardest Puzzles in Seconds
+        </h3>
+        <h3>
+          Enjoy seamless Sudoku solving across all devices: Mobile, Tablet, and Desktop.
+        </h3>
+        <h3>
+          Conquer Impossible Sudoku Puzzles: Solve even the most challenging grids with ease.
         </h3>
         <h2>
           Frequently Asked Questions (FAQ)
@@ -681,8 +687,17 @@ const App = () => {
         <h3>
           Does This Sudoku Solver Work for X Sudoku Variants?: No works only for 9X9
         </h3>
+        <h3>
+          How long does it take to solve any Sudoku puzzle?: No time - within milliseconds
+        </h3>
       </div>
       <div className="footer">
+        <Link
+          to="/terms-of-use"
+          className="link"
+        >
+          Terms of Use
+        </Link>
         <Link
           to="/privacy-policy"
           className="link"
