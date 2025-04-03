@@ -2,6 +2,7 @@ import { cloneDeep, isEqual } from 'lodash'
 import { useEffect, useRef, useState } from 'react'
 import AdSense from 'react-adsense'
 import { Link } from 'react-router'
+import { makepuzzle } from 'sudoku'
 import './App.css'
 
 const DEFAULT_STATE = Array(9)
@@ -19,7 +20,9 @@ const App = () => {
   const [invalidCol, setInvalidCol] = useState(9)
   const [invalidBox, setInvalidBox] = useState(9)
   const [showHelp, setShowHelp] = useState(false)
+  const [selectedNumber, setSelectedNumber] = useState(0)
   const inputRefs = useRef([])
+  console.log('selectedNumber => ', selectedNumber)
 
   useEffect(() => {
     for (let i = 0; i < 9; i += 1) {
@@ -78,6 +81,7 @@ const App = () => {
     if ((+value > 0 && +value < 10) || value === "") {
       const currentState = cloneDeep(state)
       currentState[i][j].value = value
+      setSelectedNumber(value)
       setState(currentState)
       if (showHelp) {
         addPossibilities({
@@ -177,10 +181,10 @@ const App = () => {
           colNums.push(num)
         }
       }
-      if (!isEqual([...new Set(rowNums)].sort(), [1,2,3,4,5,6,7,8,9])) {
+      if (!isEqual([...new Set(rowNums)].sort(), [1, 2, 3, 4, 5, 6, 7, 8, 9])) {
         valid = false
       }
-      if (!isEqual([...new Set(colNums)].sort(), [1,2,3,4,5,6,7,8,9])) {
+      if (!isEqual([...new Set(colNums)].sort(), [1, 2, 3, 4, 5, 6, 7, 8, 9])) {
         valid = false
       }
     }
@@ -197,7 +201,7 @@ const App = () => {
           }
         }
       }
-      if (!isEqual([...new Set(boxNums)].sort(), [1,2,3,4,5,6,7,8,9])) {
+      if (!isEqual([...new Set(boxNums)].sort(), [1, 2, 3, 4, 5, 6, 7, 8, 9])) {
         valid = false
       }
     }
@@ -525,6 +529,18 @@ const App = () => {
     backupStates = []
   }
 
+  const handleGenerate = () => {
+    reset()
+    const newSudoku = makepuzzle()
+    const newState = cloneDeep(DEFAULT_STATE)
+    newSudoku.forEach((v, index) => {
+      const rowNumber = Math.floor(index / 9)
+      const colNumber = index % 9
+      newState[rowNumber][colNumber].value = v || ""
+    })
+    setState(newState)
+  }
+
   return (
     <div className="app">
       <div className="container">
@@ -534,10 +550,10 @@ const App = () => {
               <div
                 key={j}
                 className={`cell ${
-                  !((i + 1) % 3) && i !==8 && "mb-4"
-                } ${
-                  !((j + 1) % 3) && j !==8 && "mr-4"
-                } ${
+                  !((i + 1) % 3) && i !== 8 && "mb-4"
+                  } ${
+                  !((j + 1) % 3) && j !== 8 && "mr-4"
+                  } ${
                   (
                     invalidRow === i ||
                     invalidCol === j ||
@@ -546,7 +562,7 @@ const App = () => {
                       boxCol: Math.floor(j / 3)
                     })
                   ) && "invalid"
-                }`}
+                  }`}
               >
                 <div
                   className={`tooltip ${showHelp && "show"}`}
@@ -565,11 +581,15 @@ const App = () => {
                     ref={(ref) => {
                       inputRefs.current[i * 9 + j] = ref
                     }}
-                    className="input"
+                    className={`input${value === selectedNumber ? ' same-as-selected' : ''}`}
                     value={value}
                     onFocus={() => {
                       inputRefs.current[i * 9 + j].select()
+                      if (value) {
+                        setSelectedNumber(value)
+                      }
                     }}
+                    onBlur={() => setSelectedNumber(0)}
                     onChange={(e) => {
                       setCellValue({ value: e.target.value, i, j })
                     }}
@@ -629,6 +649,12 @@ const App = () => {
           onClick={reset}
         >
           Reset
+        </button>
+        <button
+          className="new-button"
+          onClick={handleGenerate}
+        >
+          New
         </button>
       </div>
       <div style={{ margin: '16px 0', width: '100%', textAlign: 'center' }}>
@@ -712,7 +738,7 @@ const App = () => {
         </Link>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -102,6 +102,10 @@
   border-radius: 4px;
 }
 
+.input.same-as-selected {
+  background-color: rgba(40, 44, 52, 0.4);
+}
+
 .input:focus {
   background-color: rgba(40, 44, 52, 0.7);
   caret-color: transparent;
@@ -131,6 +135,7 @@
   font-size: 12px;
   font-weight: bold;
   cursor: pointer;
+  margin-right: 16px;
 }
 
 .reset-button:hover {
@@ -151,7 +156,7 @@
   margin-right: 16px;
 }
 
-.solve-button {
+.solve-button, .new-button {
   width: 100px;
   height: 40px;
   line-height: 40px;
