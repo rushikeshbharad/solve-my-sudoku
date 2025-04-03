@@ -1,6 +1,6 @@
 {
   "name": "solve-my-sudoku",
-  "homepage": ".",
+  "homepage": "https://www.solve-sudoku.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
