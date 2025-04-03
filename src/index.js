@@ -11,13 +11,13 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router';
 
 ReactDOM.render(
-  <BrowserRouter basename="/">
+  <BrowserRouter basename="">
     <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="terms-of-use" element={<TermsOfUse />} />
-      <Route path="privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="about-us" element={<AboutUs />} />
-      <Route path="blogs/*" element={<Blogs />} />
+      <Route path="" element={<App />} />
+      <Route path="/terms-of-use" element={<TermsOfUse />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/about-us" element={<AboutUs />} />
+      <Route path="/blogs/*" element={<Blogs />} />
     </Routes>
     <div className="footer">
         <Link
@@ -39,7 +39,7 @@ ReactDOM.render(
           About Us
         </Link>
       </div>
-  </BrowserRouter>,
+    </BrowserRouter>,
   document.getElementById('root')
 );
 
