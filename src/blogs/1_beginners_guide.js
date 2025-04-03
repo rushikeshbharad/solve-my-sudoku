@@ -2,7 +2,6 @@ import BlogBox from "../components/blog-box"
 import imgBeginnersGuide from "../assets/blog-heros/begginers_guide.jpeg"
 
 export default function BeginnersGuide() {
-    console.log('image => ', imgBeginnersGuide)
     return (
         <BlogBox
             title="Sudoku 101: A Beginner's Guide to Solving Puzzles"

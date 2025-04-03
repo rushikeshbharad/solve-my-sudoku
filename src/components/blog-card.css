@@ -1,0 +1,46 @@
+.blog-card {
+    display: flex;
+    height: 300px;
+    width: 300px;
+    margin: 16px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    color: inherit;
+}
+
+.blog-card img {
+    object-fit: contain;
+    margin: 0;
+    z-index: -1;
+    transition: margin 0.5s ease;
+}
+
+.blog-card:hover img {
+    margin: -16px;
+}
+
+.blog-card .blog-card-cover {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9));
+    z-index: 0;
+}
+
+.blog-card:hover .blog-card-cover {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
+}
+
+.blog-card h2 {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    right: 16px;
+    color: inherit;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    z-index: 1;
+}

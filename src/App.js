@@ -1,9 +1,25 @@
 import { cloneDeep, isEqual } from 'lodash'
 import { useEffect, useRef, useState } from 'react'
 import BlogBox from './components/blog-box'
-import AdSense from 'react-adsense'
+import BlogCard from './components/blog-card'
+// import AdSense from 'react-adsense'
 import { makepuzzle } from 'sudoku'
 import './App.css'
+import imgBeginnersGuide from "./assets/blog-heros/begginers_guide.jpeg"
+import imgBenefits from "./assets/blog-heros/benefits.jpeg"
+
+const BLOGS = [
+  {
+    title: "Sudoku 101: A Beginner's Guide to Solving Puzzles",
+    img: imgBeginnersGuide,
+    link: "/blogs/beginners-guide"
+  },
+  {
+    title: "The Benefits of Sudoku: More Than Just a Game",
+    img: imgBenefits,
+    link: "/blogs/benefits"
+  }
+]
 
 const DEFAULT_STATE = Array(9)
   .fill([])
@@ -656,7 +672,7 @@ const App = () => {
           New
         </button>
       </div>
-      <div style={{ margin: '16px 0', width: '100%', textAlign: 'center' }}>
+      {/* <div style={{ margin: '16px 0', width: '100%', textAlign: 'center' }}>
         <AdSense.Google
           client='ca-pub-9179894717144436'
           slot='6141439349'
@@ -665,7 +681,7 @@ const App = () => {
           responsive='true'
           layoutKey='-gw-1+2a-9x+5c'
         />
-      </div>
+      </div> */}
       <BlogBox
         title={`Instantly Solve Any Sudoku Puzzle`}
         hideHome
@@ -715,6 +731,15 @@ const App = () => {
           </li>
         </ul>
       </BlogBox>
+      <div className="blogs-list">
+        {BLOGS.map(({ title, img, link }) => (
+          <BlogCard
+            title={title}
+            img={img}
+            link={link}
+          />
+        ))}
+      </div>
     </div>
   )
 }

@@ -197,6 +197,12 @@
   animation: dash 1.5s ease-in-out infinite;
 }
 
+.blogs-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+}
+
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
