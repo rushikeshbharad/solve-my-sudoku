@@ -59,8 +59,8 @@
   margin: 1px;
   position: relative;
   background-color: rgba(255, 255, 255, 0.2);
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 4px;
 }
 
@@ -87,17 +87,17 @@
 
 .input {
   outline: none;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   margin: 0;
   padding: 0;
   border: 0;
   box-sizing: border-box;
   text-align: center;
-  line-height: 32px;
+  line-height: 40px;
   color: #61dafb;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 22px;
   background-color: transparent;
   border-radius: 4px;
 }
@@ -120,8 +120,14 @@
 }
 
 .buttons {
-  margin-top: 48px;
+  margin-top: 24px;
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.buttons button {
+  margin-top: 16px;
 }
 
 .reset-button {
@@ -212,24 +218,16 @@
   }
 }
 
-.info-container {
-  margin-top: 48px;
-}
+@media (max-width: 600px) {
+  .cell {
+    width: 32px;
+    height: 32px; 
+  }
 
-.info-container h2 {
-  margin-top: 48px;
-  margin-left: 24px;
-}
-
-.info-container h3 {
-  margin-left: 36px;
-}
-
-.footer {
-  margin: 48px 0 8px;
-}
-
-.footer .link {
-  color: white;
-  margin: 0 16px;
+  .input {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 20px;
+  }
 }

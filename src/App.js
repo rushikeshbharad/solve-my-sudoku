@@ -1,7 +1,7 @@
 import { cloneDeep, isEqual } from 'lodash'
 import { useEffect, useRef, useState } from 'react'
+import BlogBox from './components/blog-box'
 import AdSense from 'react-adsense'
-import { Link } from 'react-router'
 import { makepuzzle } from 'sudoku'
 import './App.css'
 
@@ -22,7 +22,6 @@ const App = () => {
   const [showHelp, setShowHelp] = useState(false)
   const [selectedNumber, setSelectedNumber] = useState(0)
   const inputRefs = useRef([])
-  console.log('selectedNumber => ', selectedNumber)
 
   useEffect(() => {
     for (let i = 0; i < 9; i += 1) {
@@ -581,7 +580,7 @@ const App = () => {
                     ref={(ref) => {
                       inputRefs.current[i * 9 + j] = ref
                     }}
-                    className={`input${value === selectedNumber ? ' same-as-selected' : ''}`}
+                    className={`input${value && +value === +selectedNumber ? ' same-as-selected' : ''}`}
                     value={value}
                     onFocus={() => {
                       inputRefs.current[i * 9 + j].select()
@@ -667,76 +666,55 @@ const App = () => {
           layoutKey='-gw-1+2a-9x+5c'
         />
       </div>
-      <div className="info-container">
-        <h1>
-          Free Online Sudoku Solver - Instantly Solve Any Sudoku Puzzle
-        </h1>
+      <BlogBox
+        title={`Instantly Solve Any Sudoku Puzzle`}
+        hideHome
+      >
         <h2>
           How to Use the Sudoku Solver
         </h2>
-        <h3>
-          Step 1: Enter Your Sudoku Grid
-        </h3>
-        <h3>
-          Step 2: Click 'Solve' and Get Instant Results
-        </h3>
-        <h3>
-          Step 3: Copy or Print the Solution
-        </h3>
+        <ul>
+          <li>Step 1: Enter Your puzzle into Sudoku Grid</li>
+          <li>Step 2: Click 'Solve' and Get Instant Results</li>
+        </ul>
         <h2>
           Features of Our Sudoku Solver
         </h2>
-        <h3>
-          Tackles all Sudoku difficulty levels: Easy, Medium, Hard, and Expert.
-        </h3>
-        <h3>
-          High-Performance Sudoku Solver: Delivers Rapid and Precise Solutions.
-        </h3>
-        <h3>
-          Instant Sudoku Solver: Crack Even the Hardest Puzzles in Seconds
-        </h3>
-        <h3>
-          Enjoy seamless Sudoku solving across all devices: Mobile, Tablet, and Desktop.
-        </h3>
-        <h3>
-          Conquer Impossible Sudoku Puzzles: Solve even the most challenging grids with ease.
-        </h3>
+        <ul>
+          <li>
+            Tackles all Sudoku difficulty levels: Easy, Medium, Hard, and Expert.
+          </li>
+          <li>
+            High-Performance Sudoku Solver: Delivers Rapid and Precise Solutions.
+          </li>
+          <li>
+            Instant Sudoku Solver: Crack Even the Hardest Puzzles in Seconds
+          </li>
+          <li>
+            Enjoy seamless Sudoku solving across all devices: Mobile, Tablet, and Desktop.
+          </li>
+          <li>
+            Conquer Impossible Sudoku Puzzles: Solve even the most challenging grids with ease.
+          </li>
+        </ul>
         <h2>
           Frequently Asked Questions (FAQ)
         </h2>
-        <h3>
-          Can I Solve Any Sudoku Puzzle with This Tool?: Yes
-        </h3>
-        <h3>
-          Is This Sudoku Solver Free to Use?: Yes
-        </h3>
-        <h3>
-          Does This Sudoku Solver Work for X Sudoku Variants?: No works only for 9X9
-        </h3>
-        <h3>
-          How long does it take to solve any Sudoku puzzle?: No time - within milliseconds
-        </h3>
-      </div>
-      <div className="footer">
-        <Link
-          to="/terms-of-use"
-          className="link"
-        >
-          Terms of Use
-        </Link>
-        <Link
-          to="/privacy-policy"
-          className="link"
-        >
-          Privacy Policy
-        </Link>
-        <Link
-          to="/about-us"
-          className="link"
-        >
-          About Us
-        </Link>
-      </div>
+        <ul>
+          <li>
+            Can I Solve Any Sudoku Puzzle with This Tool?: Yes
+          </li>
+          <li>
+            Is This Sudoku Solver Free to Use?: Yes
+          </li>
+          <li>
+            Does This Sudoku Solver Work for X Sudoku Variants?: No works only for 9X9
+          </li>
+          <li>
+            How long does it take to solve any Sudoku puzzle?: No time - within milliseconds
+          </li>
+        </ul>
+      </BlogBox>
     </div>
   )
 }
