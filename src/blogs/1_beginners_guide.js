@@ -5,7 +5,7 @@ export default function BeginnersGuide() {
     return (
         <BlogBox
             title="Sudoku 101: A Beginner's Guide to Solving Puzzles"
-            hero={imgBeginnersGuide}
+            img={imgBeginnersGuide}
         >
             <>
                 <p>

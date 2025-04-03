@@ -4,8 +4,8 @@ import imgBenefits from "../assets/blog-heros/benefits.jpeg"
 export default function Benefits() {
     return (
         <BlogBox
-            title={`The Benefits of Sudoku: More Than Just a Game`}
-            hero={imgBenefits}
+            title="The Benefits of Sudoku: More Than Just a Game"
+            img={imgBenefits}
         >
             <>
                 <p>
