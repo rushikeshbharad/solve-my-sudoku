@@ -6,8 +6,7 @@ import App from './App';
 import TermsOfUse from './terms-of-use';
 import PrivacyPolicy from './privacy-policy';
 import AboutUs from './about-us'
-import BeginnersGuide from './blogs/1_beginners_guide';
-import Benefits from './blogs/2_benefites';
+import Blogs from './blogs';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router';
 
@@ -18,8 +17,7 @@ ReactDOM.render(
       <Route path="/terms-of-use" element={<TermsOfUse />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/about-us" element={<AboutUs />} />
-      <Route path="/blogs/beginners-guide" element={<BeginnersGuide />} />
-      <Route path="/blogs/benefits" element={<Benefits />} />
+      <Route path="/blogs/*" element={<Blogs />} />
     </Routes>
     <div className="footer">
         <Link
