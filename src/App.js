@@ -5,18 +5,16 @@ import BlogCard from './components/blog-card'
 // import AdSense from 'react-adsense'
 import { makepuzzle } from 'sudoku'
 import './App.css'
-import imgBeginnersGuide from "./assets/blog-heros/begginers_guide.jpeg"
-import imgBenefits from "./assets/blog-heros/benefits.jpeg"
 
 const BLOGS = [
   {
     title: "Sudoku 101: A Beginner's Guide to Solving Puzzles",
-    img: imgBeginnersGuide,
+    img: "/blog-heros/begginers_guide.jpeg",
     link: "/blogs/beginners-guide"
   },
   {
     title: "The Benefits of Sudoku: More Than Just a Game",
-    img: imgBenefits,
+    img: "/blog-heros/benefits.jpeg",
     link: "/blogs/benefits"
   }
 ]

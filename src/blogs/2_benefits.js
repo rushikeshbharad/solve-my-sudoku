@@ -1,11 +1,10 @@
 import BlogBox from "../components/blog-box"
-import imgBenefits from "../assets/blog-heros/benefits.jpeg"
 
 export default function Benefits() {
     return (
         <BlogBox
             title="The Benefits of Sudoku: More Than Just a Game"
-            img={imgBenefits}
+            img="/blog-heros/benefits.jpeg"
         >
             <>
                 <p>
