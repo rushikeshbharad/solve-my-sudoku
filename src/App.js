@@ -567,9 +567,9 @@ const App = () => {
                     }}
                     className="input"
                     value={value}
-                    type="number"
-                    pattern="\d*"
-                    onClick={(e) => e.target.select()}
+                    onFocus={() => {
+                      inputRefs.current[i * 9 + j].select()
+                    }}
                     onChange={(e) => {
                       setCellValue({ value: e.target.value, i, j })
                     }}
@@ -602,7 +602,7 @@ const App = () => {
                       colNumber = colNumber < 0
                         ? 8
                         : (colNumber > 8 ? 0 : colNumber)
-                      inputRefs.current[rowNumber * 9 +colNumber].focus()
+                      inputRefs.current[rowNumber * 9 + colNumber].select()
                     }}
                   />
                 </div>

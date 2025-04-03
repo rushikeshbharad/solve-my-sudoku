@@ -102,8 +102,13 @@
   border-radius: 4px;
 }
 
-.input:focus, .input::selection {
-  background-color: #282c34;
+.input:focus {
+  background-color: rgba(40, 44, 52, 0.7);
+  caret-color: transparent;
+}
+
+.input::selection {
+  background-color: transparent;
 }
 
 .input::-webkit-inner-spin-button {
