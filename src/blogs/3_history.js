@@ -57,13 +57,31 @@ export default function History() {
                 </h2>
                 <ul>
                     <li>
-                        <a href="https://en.wikipedia.org/wiki/Sudoku">Wikipedia</a>
+                        <a
+                            href="https://en.wikipedia.org/wiki/Sudoku"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Wikipedia
+                        </a>
                     </li>
                     <li>
-                        <a href="https://www.theguardian.com/science/blog/2005/jul/28/sudoku">The Guardian</a>
+                        <a
+                            href="https://www.theguardian.com/science/blog/2005/jul/28/sudoku"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            The Guardian
+                        </a>
                     </li>
                     <li>
-                        <a href="https://www.nikoli.co.jp/en/puzzles/sudoku/">Nikoli</a>
+                        <a
+                            href="https://www.nikoli.co.jp/en/puzzles/sudoku/"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Nikoli
+                        </a>
                     </li>
                 </ul>
             </>

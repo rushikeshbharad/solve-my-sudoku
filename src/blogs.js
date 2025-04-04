@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router'
 import BeginnersGuide from './blogs/1_beginners_guide'
 import Benefits from './blogs/2_benefits'
 import History from './blogs/3_history'
+import AdvancedTechniques from './blogs/4_advanced_techniques'
 
 export default function Blogs() {
     return (
@@ -9,6 +10,7 @@ export default function Blogs() {
             <Route path="/beginners-guide" element={<BeginnersGuide />} />
             <Route path="/benefits" element={<Benefits />} />
             <Route path="/history" element={<History />} />
+            <Route path="/advanced-techniques" element={<AdvancedTechniques />} />
         </Routes>
     )
 }

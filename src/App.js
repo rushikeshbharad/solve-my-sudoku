@@ -21,6 +21,11 @@ const BLOGS = [
     title: "The History of Sudoku",
     img: "/blog-heros/history.jpeg",
     link: "blogs/history"
+  },
+  {
+    title: "Advanced Sudoku Solving Techniques",
+    img: "/blog-heros/advanced_techniques.jpeg",
+    link: "blogs/advanced-techniques"
   }
 ]
 
