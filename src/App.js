@@ -8,14 +8,19 @@ import './App.css'
 
 const BLOGS = [
   {
-    title: "Sudoku 101: A Beginner's Guide to Solving Puzzles",
+    title: "Sudoku 101",
     img: "/blog-heros/begginers_guide.jpeg",
     link: "/blogs/beginners-guide"
   },
   {
-    title: "The Benefits of Sudoku: More Than Just a Game",
+    title: "The Benefits of Sudoku",
     img: "/blog-heros/benefits.jpeg",
     link: "/blogs/benefits"
+  },
+  {
+    title: "The History of Sudoku",
+    img: "/blog-heros/history.jpeg",
+    link: "blogs/history"
   }
 ]
 
