@@ -4,6 +4,7 @@ import Benefits from './blogs/2_benefits'
 import History from './blogs/3_history'
 import AdvancedTechniques from './blogs/4_advanced_techniques'
 import CreateYourOwn from './blogs/5_create_your_own'
+import Algorithms from './blogs/6_algorithms'
 
 export default function Blogs() {
     return (
@@ -13,6 +14,7 @@ export default function Blogs() {
             <Route path="/history" element={<History />} />
             <Route path="/advanced-techniques" element={<AdvancedTechniques />} />
             <Route path="/create-your-own" element={<CreateYourOwn />} />
+            <Route path="/algorithms" element={<Algorithms />} />
         </Routes>
     )
 }

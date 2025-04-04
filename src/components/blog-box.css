@@ -58,16 +58,26 @@
 }
 
 .blog-box pre {
+  margin: 16px 0;
   background-color: #282c34;
   color: #f0f0f0;
   padding: 15px;
-  border-radius: 8px;
   overflow-x: auto;
   font-size: 0.9em;
 }
 
 .blog-box code {
+  background-color: rgba(0, 0, 0, 0.5);
+  max-width: calc(100% - 32px);
+  overflow-x: auto;
+  display: block;
+  margin: 16px 0;
+  padding: 16px;
+  border-radius: 8px;
   font-family: monospace, monospace;
+  white-space: pre;
+  font-size: 14px;
+  /* border-left: rgba(255, 255, 255, 0.5) 8px solid; */
 }
 
 .blog-box a {

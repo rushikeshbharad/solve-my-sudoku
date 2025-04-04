@@ -31,6 +31,11 @@ const BLOGS = [
     title: "Build Your Own Sudoku Puzzles",
     img: "/blog-heros/create_your_own.jpeg",
     link: "blogs/create-your-own"
+  },
+  {
+    title: "Algorithms: Math Behind the Sudoku Puzzle",
+    img: "/blog-heros/algorithms.jpeg",
+    link: "blogs/algorithms"
   }
 ]
 
