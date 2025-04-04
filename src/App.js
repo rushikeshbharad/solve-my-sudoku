@@ -26,6 +26,11 @@ const BLOGS = [
     title: "Advanced Sudoku Solving Techniques",
     img: "/blog-heros/advanced_techniques.jpeg",
     link: "blogs/advanced-techniques"
+  },
+  {
+    title: "Build Your Own Sudoku Puzzles",
+    img: "/blog-heros/create_your_own.jpeg",
+    link: "blogs/create-your-own"
   }
 ]
 
