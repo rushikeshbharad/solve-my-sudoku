@@ -5,6 +5,7 @@
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
   color: rgba(255, 255, 255, 0.9);
+  font-size: 18px;
 }
 
 .blog-box .home-link {
@@ -39,7 +40,6 @@
 }
 
 .blog-box p {
-  font-size: 1.1em;
   line-height: 1.6;
   margin-bottom: 12px;
   color: rgba(255, 255, 255, 0.7);
@@ -52,8 +52,8 @@
 }
 
 .blog-box li {
-  font-size: 1.1em;
-  line-height: 1.6;
+  font-size: 0.95em;
+  line-height: 1.8;
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -76,8 +76,7 @@
   border-radius: 8px;
   font-family: monospace, monospace;
   white-space: pre;
-  font-size: 14px;
-  /* border-left: rgba(255, 255, 255, 0.5) 8px solid; */
+  font-size: 0.75em;
 }
 
 .blog-box a {
